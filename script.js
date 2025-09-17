@@ -1,27 +1,55 @@
-const display = document.querySelector(".dis");
+
+const equationEl = document.getElementById("equation");
+const resultEl = document.getElementById("result");
+
+let currentInput = "";
+let lastResult = "";
 
 function appendToDisplay(val) {
-  display.value += val;
+  currentInput += val;
+  equationEl.textContent = currentInput;
 }
 
-function clearDisplay() {
-  display.value = "";
+function clearAll() {
+  currentInput = "";
+  lastResult = "";
+  equationEl.textContent = "";
+  resultEl.textContent = "0";
+}
+
+function clearEntry() {
+  currentInput = "";
+  equationEl.textContent = "";
 }
 
 function deleteLast() {
-  display.value = display.value.slice(0, -1);
+  currentInput = currentInput.slice(0, -1);
+  equationEl.textContent = currentInput;
+}
+
+function toggleSign() {
+  if (currentInput) {
+    if (currentInput.startsWith("-")) {
+      currentInput = currentInput.substring(1);
+    } else {
+      currentInput = "-" + currentInput;
+    }
+    equationEl.textContent = currentInput;
+  }
 }
 
 function calculate() {
   try {
-    let expression = display.value;
+    let expression = currentInput;
 
-    // Convert percentage: 50% => (50/100)
     expression = expression.replace(/(\d+)%/g, "($1/100)");
 
-    const result = Function('"use strict";return (' + expression + ')')();
-    display.value = result;
+    let evalResult = Function('"use strict";return (' + expression + ')')();
+    if (evalResult !== undefined) {
+      resultEl.textContent = evalResult;
+      lastResult = evalResult;
+    }
   } catch (e) {
-    display.value = "Error";
+    resultEl.textContent = "Error";
   }
 }
