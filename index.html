@@ -3,40 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" href="apple-calculator.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
   <title>Calculator</title>
 </head>
 <body>
   <div class="calculator">
-    <input class="dis" type="text" disabled />
-    <button onclick="clearDisplay()">C</button>
-    <button onclick="deleteLast()">⌫</button>
+    <div class="display">
+      <div class="equation" id="equation"></div>
+      <div class="result" id="result">0</div>
+    </div>
+
     <button onclick="appendToDisplay('%')">%</button>
-    <button onclick="appendToDisplay('.')">.</button>
+    <button onclick="clearEntry()">CE</button>
+    <button onclick="clearAll()">C</button>
+    <button onclick="deleteLast()">⌫</button>
+
+    <button onclick="appendToDisplay('1/2')">½x</button>
+    <button onclick="appendToDisplay('**2')">x²</button>
+    <button onclick="appendToDisplay('**0.5')">√x</button>
+    <button onclick="appendToDisplay('+')">+</button>
 
     <button onclick="appendToDisplay('7')">7</button>
     <button onclick="appendToDisplay('8')">8</button>
     <button onclick="appendToDisplay('9')">9</button>
-    <button onclick="appendToDisplay('/')">÷</button>
+    <button onclick="appendToDisplay('*')">×</button>
 
     <button onclick="appendToDisplay('4')">4</button>
     <button onclick="appendToDisplay('5')">5</button>
     <button onclick="appendToDisplay('6')">6</button>
-    <button onclick="appendToDisplay('*')">×</button>
+    <button onclick="appendToDisplay('-')">−</button>
 
     <button onclick="appendToDisplay('1')">1</button>
     <button onclick="appendToDisplay('2')">2</button>
     <button onclick="appendToDisplay('3')">3</button>
-    <button onclick="appendToDisplay('-')">−</button>
+    <button onclick="appendToDisplay('/')">÷</button>
 
+    <button onclick="toggleSign()">±</button>
     <button onclick="appendToDisplay('0')">0</button>
-    <button onclick="appendToDisplay('+')">+</button>
-    <button onclick="calculate()" class="equal">=</button>
+    <button onclick="appendToDisplay('.')">.</button>
+    <button class="equal" onclick="calculate()">=</button>
   </div>
 
   <div class="footer">
-    <p class="version">version 1.3</p>
+    <p class="version">version 1.4</p>
     <h2>Also my projects</h2>
     <a class="Tamo" href="https://fiu458.github.io/click-test/">click test</a>
     <a class="Eduka" href="#">Coming soon</a>
